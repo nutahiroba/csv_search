@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>テキストの距離</title>
+<style>
+  input[type="text"] {
+    font-size: 1.6em;
+    padding: 0.3em 0;
+    width: 30em;
+    margin-bottom: 1em;
+  }
+  button {
+    font-size: 2em;
+  }
+  td {
+    padding: 10px;
+    border: solid 1px #666;
+  }
+  td:first-child {
+    background-color: #FFF9C4;
+    font-size: 2em;
+  }
+</style>
+</head>
+<body>
+<h1>テキストの類似度を計測します</h1>
+<p>0ほどテキスト内容が近く、数が多いほど遠いです。</p>
+<form name="form1">
+  <input type="text" name="text1" value=""><br>
+  <input type="text" name="text2" value=""><br>
+  <button onclick="clickBtn();return false;">計測</button>
+</form>
+<h1>結果</h1>
+<table id="result">
+</table>
+<script type="text/javascript">
+let clickBtn = function() {
+  let text1 = form1.text1.value,
+      text2 = form1.text2.value,
+      dist = levenshteinDistance(text1, text2),
+      result = document.getElementById('result'),
+      newRow = result.insertRow(),
+      rowData = [dist, text1, text2];
+  //tableに結果書き出し
+  for (let i=0; i<rowData.length; i++) {
+    let newCell = newRow.insertCell(),
+        newText = document.createTextNode(rowData[i]);
+    newCell.appendChild(newText);
+  }
+  return false;
+},
+ 
+//文字列の類似度チェック
+levenshteinDistance = function(str1, str2) {
+  let r, c, cost,
+      d = [];
+ 
+  for (r=0; r<=str1.length; r++) {
+    d[r] = [r];
+  }
+  for (c=0; c<=str2.length; c++) {
+    d[0][c] = c;
+  }
+  for (r=1; r<=str1.length; r++) {
+    for (c=1; c<=str2.length; c++) {
+      //一文字目の文字コードと二文字目の文字コードが一致ならばtrue?
+      cost = str1.charCodeAt(r-1) == str2.charCodeAt(c-1) ? 0: 1;
+      d[r][c] = Math.min(d[r-1][c]+1, d[r][c-1]+1, d[r-1][c-1]+cost);
+    }
+  }
+  return d[str1.length][str2.length];
+}
+</script>
+</body>
+</html>

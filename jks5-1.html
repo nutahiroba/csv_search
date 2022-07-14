@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="jks4-2.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="main">
+  <div class="columns">
+  <div class="column">
+    <article class="message is-primary">
+      <div class="message-body">
+        <span id="message">csvファイル検索システム(UTF-8)</span>
+      </div>
+    </article>
+  </div>
+
+  <div class="setting">
+  <div class="in_file">
+    <input id="csv_file" type="file" class="is-primary" href="#" label="ファイルを選択（utf-8）">
+  </div>
+
+  <div class="mode">
+    <input type="radio" name="mode" value="part" id="part" checked>
+    <label for="part">一致</label>
+    <input type="radio" name="mode" value="sort" id="sort">
+    <label for="sort">類似度でソート</label>
+    <input type="radio" name="mode" value="word" id="word">
+    <label for="word">単語で判断</label>
+  </div>
+  </div>
+  <div id="get_tag"></div>
+
+<div class="csv_search">
+  <form>
+    <input type="text" id="search-text" placeholder="入力" style="width: 200px; height: 30px;">
+  </form>
+</div>
+
+<div class="csv_table">
+  <table border="1"  id="csv_data_table">
+    <div class="tablepart">
+      <tr id="header"></tr>
+      <tbody id="output_csv" class="target-area"></tbody>
+    </div>
+  </table>
+</div>
+</div>
+<div class="last">
+  <footer>
+    2022.6.30
+  </footer>
+</div>
+</div>
+  <script src="jks5-1.js"></script>
+</body>
+</html>

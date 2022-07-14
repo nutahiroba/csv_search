@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+  <link rel="stylesheet" href="jks4-2.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="columns">
+  <div class="column">
+    <article class="message is-primary">
+      <div class="message-body">
+        <span id="message">ファイルを選択してください。</span>
+      </div>
+    </article>
+  </div>
+</div>
+<div class="columns">
+  <div class="column">
+    <input id="csv_file" type="file">
+  </div>
+</div>
+
+  <form>
+    <input type="text" id="search-text" placeholder="入力">
+  </form>
+  氏名：<div id="name"></div>学籍番号：<div id="number"></div>
+
+  <table border="1" class="target-area">
+    <tbody id="output_csv"></tbody>
+  </table>
+
+  <script src="jks5-2.js"></script>
+</body>
+</html>
